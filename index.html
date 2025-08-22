@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="js/controller.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="title">Wordle assistant</h1>
+      <div class="content">
+        <div class="main-content">
+          <div class="inputs"></div>
+          <div class="suggestions">
+            <div class="suggestion">aaaaa</div>
+            <div class="suggestion">aaaab</div>
+            <div class="suggestion">aaaac</div>
+            <div class="suggestion">aaaad</div>
+            <div class="suggestion">aaaae</div>
+            <div class="suggestion">aaaaf</div>
+            <div class="suggestion">aaaag</div>
+            <div class="suggestion">aaaah</div>
+            <div class="suggestion">aaaai</div>
+          </div>
+        </div>
+        <div class="side-content">
+          <div class="radio-button-container">
+            <div>
+              <input
+                type="radio"
+                id="letter-absent"
+                name="letter-status"
+                value="absent"
+              />
+              <label for="letter-absent">Absent</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="letter-present"
+                name="letter-status"
+                value="present"
+              />
+              <label for="letter-present">Present (Wrong Position)</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="letter-correct"
+                name="letter-status"
+                value="correct"
+              />
+              <label for="letter-correct">Correct Position</label>
+            </div>
+          </div>
+          <button class="search">Search</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

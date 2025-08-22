@@ -1,0 +1,56 @@
+.title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.content {
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  gap: 50px;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.input {
+  aspect-ratio: 1;
+  width: 48px;
+}
+
+.suggestions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.suggestions > div {
+  text-align: center;
+}
+
+.absent {
+  background-color: gray;
+}
+
+.correct {
+  background-color: greenyellow;
+}
+
+.present {
+  background-color: orange;
+}
