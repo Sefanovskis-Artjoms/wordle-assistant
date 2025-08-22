@@ -1,3 +1,7 @@
+export function clearSearchResults(container) {
+  container.innerHTML = "";
+}
+
 export function displaySearchResults(container, words) {
   container.innerHTML = "";
   if (words.length === 0) {

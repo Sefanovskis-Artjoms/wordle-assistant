@@ -7,6 +7,7 @@ const radioButtons = document.querySelectorAll('input[name="letter-status"]');
 const inputArea = document.querySelector(".inputs");
 const suggestionsContainer = document.querySelector(".suggestions");
 const searchBtn = document.querySelector(".search");
+const resetBtn = document.querySelector(".reset");
 
 const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 const deleteKeys = ["Delete", "Backspace"];
@@ -19,6 +20,11 @@ view.createGrid(inputArea);
 loadWords();
 
 searchBtn.addEventListener("click", () => handleSearchWords());
+resetBtn.addEventListener("click", () => {
+  state.resetState();
+  view.createGrid(inputArea);
+  view.clearSearchResults(suggestionsContainer);
+});
 inputArea.addEventListener("click", (e) => handleAddTypeWithClick(e));
 inputArea.addEventListener("keydown", (e) => handleInputAreaKeyDown(e));
 radioButtonContainer.addEventListener("click", (e) => handleTypeSelection(e));
