@@ -1,29 +1,28 @@
 export function displaySearchResults(container, words) {
   container.innerHTML = "";
+  if (words.length === 0) {
+    container.innerHTML = `<div class="suggestions__no-results">No word matched given filters. It may be because we don't have necesarry word in our list or your query is incorrect.</div>`;
+    return;
+  }
   _renderByChunks(container, words);
 }
 
-export function displayEmptySearchResults(container, words) {
-  container.innerHTML = `<span class="search__no-results">No word matched given filters. It may be because we don't have necesarry word in our list or your query is incorrect. Either way you can check the list of all possible combinations of letters for the given query for an inspiration.</span>`;
-  return;
-}
-
-function _renderByChunks(container, elementsToRender, chunkSize = 50) {
+function _renderByChunks(container, wordsToRender, chunkSize = 50) {
   let currentIndex = 0;
 
   function renderNextChunk() {
     const fragment = document.createDocumentFragment();
-    const end = Math.min(currentIndex + chunkSize, elementsToRender.length);
+    const end = Math.min(currentIndex + chunkSize, wordsToRender.length);
     for (let i = 0; i < end; i++) {
-      const element = document.createElement("span");
-      element.className = "search__result";
-      element.textContent = elementsToRender[i];
+      const element = document.createElement("div");
+      element.className = "suggestions__result";
+      element.textContent = wordsToRender[i];
       fragment.appendChild(element);
     }
     container.appendChild(fragment);
     currentIndex = end;
 
-    if (currentIndex < elementsToRender.length) {
+    if (currentIndex < wordsToRender.length) {
       requestAnimationFrame(renderNextChunk);
     }
   }

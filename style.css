@@ -43,6 +43,12 @@
   text-align: center;
 }
 
+.suggestions__no-results {
+  max-width: 300px;
+  grid-column: 1 / -1;
+  padding-bottom: 24px;
+}
+
 .absent {
   background-color: gray;
 }
