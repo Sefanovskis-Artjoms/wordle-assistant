@@ -95,6 +95,13 @@ const handleLetterInput = function (letter) {
     state.currentInputElement
   );
   if (!nextElement) return;
+  if (
+    nextElement.classList.contains("correct") ||
+    nextElement.classList.contains("present") ||
+    nextElement.classList.contains("absent")
+  ) {
+    return;
+  }
   state.currentInputElement = nextElement;
   state.currentInputElement.value = nextLetter;
   view.focusCell(state.currentInputElement);
