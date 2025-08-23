@@ -3,7 +3,6 @@ import * as view from "./view/index.js";
 import { getWords } from "./api.js";
 
 const radioButtonContainer = document.querySelector(".radio-button-wrapper");
-const radioButtons = document.querySelectorAll('input[name="letter-status"]');
 const inputArea = document.querySelector(".inputs");
 const suggestionsContainer = document.querySelector(".suggestions");
 const fillerList = document.querySelector(".filler-word-list");
@@ -13,6 +12,7 @@ const resetBtn = document.querySelector(".reset");
 const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 const deleteKeys = ["Delete", "Backspace"];
 const numberKeys = ["1", "2", "3"];
+const searchKeys = ["Enter"];
 const letterKeys = /^[a-z]$/i;
 
 let wordList = [];
@@ -49,7 +49,6 @@ const handleInputAreaKeyDown = (e) => {
   const targetElement = e.target;
   if (!targetElement.classList.contains("input")) return;
   state.currentInputElement = targetElement;
-
   if (e.key.match(letterKeys)) {
     handleLetterInput(e.key);
     manageFillerWordUse();
@@ -68,6 +67,10 @@ const handleInputAreaKeyDown = (e) => {
   if (deleteKeys.includes(e.key)) {
     deleteLetter();
     manageFillerWordUse();
+    return;
+  }
+  if (searchKeys.includes(e.key)) {
+    handleSearchWords();
     return;
   }
 };
