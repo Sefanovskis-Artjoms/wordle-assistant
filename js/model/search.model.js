@@ -4,7 +4,6 @@ export function filterWords(
   presentLetters,
   absentLetters
 ) {
-  console.log(absentLetters);
   const absentSet = new Set(absentLetters);
   const allPresentLetters = [...new Set(presentLetters.flat())];
 

@@ -70,3 +70,40 @@ export function clearCell(inputElement) {
   inputElement.classList.remove("absent", "present", "correct");
   inputElement.value = "";
 }
+
+export function insertWordIntoGrid(gridContainer, word) {
+  let isWordAlreadyInGrid = false;
+  let isPlaceForWord = false;
+  let indexOfRowToInsert = null;
+  const rows = gridContainer.querySelectorAll(".input-row");
+  for (const [i, row] of rows.entries()) {
+    const inputs = row.querySelectorAll(".input");
+    console.log(inputs);
+
+    const lettersInRow = Array.from(inputs).map((input) => input.value);
+    if (lettersInRow.join("") === word) {
+      isWordAlreadyInGrid = true;
+      break;
+    }
+
+    if (isPlaceForWord) continue;
+    const hasNoType = Array.from(inputs).every((input) => {
+      return (
+        !input.classList.contains("absent") &&
+        !input.classList.contains("present") &&
+        !input.classList.contains("correct")
+      );
+    });
+    if (hasNoType) {
+      isPlaceForWord = true;
+      indexOfRowToInsert = i;
+    }
+  }
+
+  if (isWordAlreadyInGrid || !isPlaceForWord) return false;
+  rows[indexOfRowToInsert]
+    .querySelectorAll(".input")
+    .forEach((input, index) => {
+      input.value = word[index];
+    });
+}

@@ -28,6 +28,9 @@ resetBtn.addEventListener("click", () => {
 inputArea.addEventListener("click", (e) => handleAddTypeWithClick(e));
 inputArea.addEventListener("keydown", (e) => handleInputAreaKeyDown(e));
 radioButtonContainer.addEventListener("click", (e) => handleTypeSelection(e));
+suggestionsContainer.addEventListener("click", (e) =>
+  handleGetWordFromSuggestions(e)
+);
 
 async function loadWords() {
   searchBtn.disabled = true;
@@ -193,4 +196,12 @@ const handleSearchWords = function () {
   );
 
   view.displaySearchResults(suggestionsContainer, filteredWords);
+};
+
+const handleGetWordFromSuggestions = function (e) {
+  const targetElement = e.target;
+  if (!targetElement.classList.contains("suggestions__result")) return;
+
+  const word = targetElement.textContent.trim();
+  view.insertWordIntoGrid(inputArea, word);
 };
