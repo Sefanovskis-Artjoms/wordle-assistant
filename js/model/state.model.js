@@ -1,6 +1,7 @@
 export class State {
   currentInputElement = null;
   currentType = null;
+  #fillerWords = ["SLANT", "PRICE", "DOUGH", "BUMPY", "FAKED", "JOWLY"];
   #absentLetters = new Map();
   #correctLetters = [new Map(), new Map(), new Map(), new Map(), new Map()];
   #presentLetters = [new Map(), new Map(), new Map(), new Map(), new Map()];
@@ -13,6 +14,10 @@ export class State {
     this.#absentLetters.clear();
     this.#correctLetters.forEach((map) => map.clear());
     this.#presentLetters.forEach((map) => map.clear());
+  }
+
+  getFillerWords() {
+    return [...this.#fillerWords];
   }
 
   getAbsentLetters() {

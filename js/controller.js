@@ -2,10 +2,11 @@ import * as model from "./model/index.js";
 import * as view from "./view/index.js";
 import { getWords } from "./api.js";
 
-const radioButtonContainer = document.querySelector(".radio-button-container");
+const radioButtonContainer = document.querySelector(".radio-button-wrapper");
 const radioButtons = document.querySelectorAll('input[name="letter-status"]');
 const inputArea = document.querySelector(".inputs");
 const suggestionsContainer = document.querySelector(".suggestions");
+const fillerList = document.querySelector(".filler-word-list");
 const searchBtn = document.querySelector(".search");
 const resetBtn = document.querySelector(".reset");
 
@@ -17,6 +18,7 @@ const letterKeys = /^[a-z]$/i;
 let wordList = [];
 const state = new model.State();
 view.createGrid(inputArea);
+view.displayFillerWords(fillerList, state.getFillerWords());
 loadWords();
 
 searchBtn.addEventListener("click", () => handleSearchWords());
@@ -31,6 +33,7 @@ radioButtonContainer.addEventListener("click", (e) => handleTypeSelection(e));
 suggestionsContainer.addEventListener("click", (e) =>
   handleGetWordFromSuggestions(e)
 );
+fillerList.addEventListener("click", (e) => handleGetWordFromFillers(e));
 
 async function loadWords() {
   searchBtn.disabled = true;
@@ -201,6 +204,14 @@ const handleSearchWords = function () {
 const handleGetWordFromSuggestions = function (e) {
   const targetElement = e.target;
   if (!targetElement.classList.contains("suggestions__result")) return;
+
+  const word = targetElement.textContent.trim();
+  view.insertWordIntoGrid(inputArea, word);
+};
+
+const handleGetWordFromFillers = function (e) {
+  const targetElement = e.target;
+  if (!targetElement.classList.contains("filler-word")) return;
 
   const word = targetElement.textContent.trim();
   view.insertWordIntoGrid(inputArea, word);
