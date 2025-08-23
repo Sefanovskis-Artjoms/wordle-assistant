@@ -21,13 +21,8 @@ view.createGrid(inputArea);
 view.displayFillerWords(fillerList, state.getFillerWords());
 loadWords();
 
+resetBtn.addEventListener("click", () => handleReset());
 searchBtn.addEventListener("click", () => handleSearchWords());
-resetBtn.addEventListener("click", () => {
-  state.resetState();
-  view.createGrid(inputArea);
-  view.clearSearchResults(suggestionsContainer);
-  manageFillerWordUse();
-});
 inputArea.addEventListener("click", (e) => handleAddTypeWithClick(e));
 inputArea.addEventListener("keydown", (e) => handleInputAreaKeyDown(e));
 radioButtonContainer.addEventListener("click", (e) => handleTypeSelection(e));
@@ -43,6 +38,16 @@ async function loadWords() {
   searchBtn.disabled = false;
   searchBtn.textContent = "Search";
 }
+
+const handleReset = function () {
+  state.resetState();
+  view.createGrid(inputArea);
+  view.clearSearchResults(suggestionsContainer);
+  manageFillerWordUse();
+  radioButtonContainer
+    .querySelectorAll("input")
+    .forEach((input) => (input.checked = false));
+};
 
 const handleInputAreaKeyDown = (e) => {
   e.preventDefault();
