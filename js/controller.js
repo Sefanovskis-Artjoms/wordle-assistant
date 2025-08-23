@@ -51,6 +51,7 @@ const handleInputAreaKeyDown = (e) => {
 
   if (e.key.match(letterKeys)) {
     handleLetterInput(e.key);
+    manageFillerWordUse();
     return;
   }
   if (arrowKeys.includes(e.key)) {
@@ -65,6 +66,7 @@ const handleInputAreaKeyDown = (e) => {
   }
   if (deleteKeys.includes(e.key)) {
     deleteLetter();
+    manageFillerWordUse();
     return;
   }
 };
@@ -207,6 +209,7 @@ const handleGetWordFromSuggestions = function (e) {
 
   const word = targetElement.textContent.trim();
   view.insertWordIntoGrid(inputArea, word);
+  manageFillerWordUse();
 };
 
 const handleGetWordFromFillers = function (e) {
@@ -215,4 +218,10 @@ const handleGetWordFromFillers = function (e) {
 
   const word = targetElement.textContent.trim();
   view.insertWordIntoGrid(inputArea, word);
+  manageFillerWordUse();
+};
+
+const manageFillerWordUse = function () {
+  const usedWords = view.checkDisplayedFillerWords(state.getFillerWords());
+  view.setUsedFillerWords(fillerList, usedWords);
 };

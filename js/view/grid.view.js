@@ -78,7 +78,6 @@ export function insertWordIntoGrid(gridContainer, word) {
   const rows = gridContainer.querySelectorAll(".input-row");
   for (const [i, row] of rows.entries()) {
     const inputs = row.querySelectorAll(".input");
-    console.log(inputs);
 
     const lettersInRow = Array.from(inputs).map((input) => input.value);
     if (lettersInRow.join("") === word) {
@@ -106,4 +105,19 @@ export function insertWordIntoGrid(gridContainer, word) {
     .forEach((input, index) => {
       input.value = word[index];
     });
+}
+
+export function checkDisplayedFillerWords(words) {
+  const rows = document.querySelectorAll(".input-row");
+  const presentWords = new Set();
+  rows.forEach((row) => {
+    const word = Array.from(row.querySelectorAll(".input"))
+      .map((input) => input.value)
+      .join("")
+      .toUpperCase();
+    if (words.includes(word)) {
+      presentWords.add(word);
+    }
+  });
+  return [...presentWords];
 }

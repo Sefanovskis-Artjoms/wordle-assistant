@@ -49,6 +49,10 @@
   padding-bottom: 24px;
 }
 
+.filler-word-list .used {
+  text-decoration: line-through;
+}
+
 .absent {
   background-color: gray;
 }
