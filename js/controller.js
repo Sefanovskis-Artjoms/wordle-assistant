@@ -26,6 +26,7 @@ resetBtn.addEventListener("click", () => {
   state.resetState();
   view.createGrid(inputArea);
   view.clearSearchResults(suggestionsContainer);
+  manageFillerWordUse();
 });
 inputArea.addEventListener("click", (e) => handleAddTypeWithClick(e));
 inputArea.addEventListener("keydown", (e) => handleInputAreaKeyDown(e));
