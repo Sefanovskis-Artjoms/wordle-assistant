@@ -5,8 +5,6 @@ export class State {
   #absentLetters = new Map();
   #correctLetters = [new Map(), new Map(), new Map(), new Map(), new Map()];
   #presentLetters = [new Map(), new Map(), new Map(), new Map(), new Map()];
-  // TODO: implement logic where letters can be present multiple times and can be absent if entered too many times
-  // It could be implemented by introducing another category of letters in a state
 
   resetState() {
     this.currentInputElement = null;
