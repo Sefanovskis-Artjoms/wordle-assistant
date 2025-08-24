@@ -1,37 +1,193 @@
+:root {
+  --color-text: #393e4c;
+  --color-green: #79b851;
+  --color-orange: #f3c237;
+  --color-gray: #a4aec4;
+  --color-light-gray-border: #dee1e9;
+  --color-light-gray: #fbfcff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-text);
+  background-color: #fff;
+  min-height: 100vh;
+  font-size: 1.6rem;
+}
+
+.main {
+  padding: 6.4rem 2.4rem;
+}
+
 .title {
   text-align: center;
-  margin-bottom: 60px;
+  font-size: 2.2rem;
+  margin-bottom: 3.6rem;
 }
 
 .content {
   margin: 0 auto;
   width: fit-content;
-  display: flex;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.6rem;
 }
 
-.side-content {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+.main-content {
+  margin-left: auto;
 }
 
 .inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
   margin-bottom: 40px;
+  width: fit-content;
 }
 
 .input-row {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
+  display: contents;
 }
 
 .input {
   aspect-ratio: 1;
-  width: 48px;
+  width: 4.8rem;
+  font-size: 2.2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  background-color: var(--color-light-gray);
+  border: 2px solid var(--color-light-gray-border);
+  caret-color: transparent;
+  font-weight: 600;
+}
+
+.input:not(:placeholder-shown) {
+  border-color: var(--color-gray);
+  background-color: inherit;
+}
+
+.input.absent {
+  background-color: var(--color-gray);
+  border-color: var(--color-gray);
+  color: #fff;
+}
+
+.input.present {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+  color: #fff;
+}
+
+.input.correct {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  color: #fff;
+}
+
+.radio-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.radio-button__helper-text {
+  font-size: 1.4rem;
+}
+
+.filler-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.filler-word-list {
+  display: grid;
+  width: fit-content;
+  list-style: none;
+  padding-left: 1.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3.6rem;
+  row-gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.filler-word {
+  width: fit-content;
+  letter-spacing: 0.4rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.filler-word::before {
+  content: " ";
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 0.1rem;
+  background-color: #000;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+
+.filler-word.used::before {
+  width: calc(100% + 1.5rem);
+}
+
+.btn {
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  padding: 0.8rem 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-search {
+  background-color: var(--color-green);
+  color: #fff;
+  border-color: var(--color-green);
+}
+
+.btn-search:hover {
+  background-color: transparent;
+  color: var(--color-green);
+}
+
+.btn-reset {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-gray);
+}
+
+.btn-reset:hover {
+  background-color: var(--color-gray);
+  color: #fff;
+}
+
+.suggestions-wrapper > * {
+  text-align: center;
+}
+
+.search-results-title {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.2rem;
 }
 
 .suggestions {
@@ -39,28 +195,15 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.suggestions > div {
-  text-align: center;
+.suggestions__empty {
+  grid-column: 1/-1;
 }
-
 .suggestions__no-results {
-  max-width: 300px;
+  max-width: 26rem;
   grid-column: 1 / -1;
   padding-bottom: 24px;
 }
 
-.filler-word-list .used {
-  text-decoration: line-through;
-}
-
-.absent {
-  background-color: gray;
-}
-
-.correct {
-  background-color: greenyellow;
-}
-
-.present {
-  background-color: orange;
+.suggestions__result {
+  cursor: pointer;
 }

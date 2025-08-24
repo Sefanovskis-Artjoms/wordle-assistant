@@ -5,7 +5,7 @@ export function clearSearchResults(container) {
 export function displaySearchResults(container, words) {
   container.innerHTML = "";
   if (words.length === 0) {
-    container.innerHTML = `<div class="suggestions__no-results">No word matched given filters. It may be because we don't have necesarry word in our list or your query is incorrect.</div>`;
+    container.innerHTML = `<div class="suggestions__no-results">No word matched given filters. It may be because we don't have the necesarry word in our list or your query is incorrect.</div>`;
     return;
   }
   _renderByChunks(container, words);

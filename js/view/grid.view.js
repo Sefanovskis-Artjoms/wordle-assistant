@@ -9,6 +9,7 @@ export function createGrid(container, rows = 6, columns = 5) {
       const input = document.createElement("input");
       input.type = "text";
       input.className = "input";
+      input.placeholder = " ";
 
       input.dataset.row = i;
       input.dataset.column = j;
@@ -120,4 +121,8 @@ export function checkDisplayedFillerWords(words) {
     }
   });
   return [...presentWords];
+}
+
+export function setSuggestions(container) {
+  container.innerHTML = `<div class="suggestions__empty">Start search to get the results</div>`;
 }

@@ -6,8 +6,8 @@ const radioButtonContainer = document.querySelector(".radio-button-wrapper");
 const inputArea = document.querySelector(".inputs");
 const suggestionsContainer = document.querySelector(".suggestions");
 const fillerList = document.querySelector(".filler-word-list");
-const searchBtn = document.querySelector(".search");
-const resetBtn = document.querySelector(".reset");
+const searchBtn = document.querySelector(".btn-search");
+const resetBtn = document.querySelector(".btn-reset");
 
 const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 const deleteKeys = ["Delete", "Backspace"];
@@ -18,6 +18,7 @@ const letterKeys = /^[a-z]$/i;
 let wordList = [];
 const state = new model.State();
 view.createGrid(inputArea);
+view.setSuggestions(suggestionsContainer);
 view.displayFillerWords(fillerList, state.getFillerWords());
 loadWords();
 
@@ -47,6 +48,7 @@ const handleReset = function () {
   radioButtonContainer
     .querySelectorAll("input")
     .forEach((input) => (input.checked = false));
+  view.setSuggestions(suggestionsContainer);
 };
 
 const handleInputAreaKeyDown = (e) => {

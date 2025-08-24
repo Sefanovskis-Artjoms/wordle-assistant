@@ -13,10 +13,17 @@
       <div class="content">
         <div class="main-content">
           <div class="inputs"></div>
-          <div class="suggestions"></div>
+          <div class="suggestions-wrapper">
+            <div class="search-results-title">Search results</div>
+            <div class="suggestions"></div>
+          </div>
         </div>
         <div class="side-content">
           <div class="radio-button-wrapper">
+            <p class="radio-button__helper-text">
+              *You can press the respecitve number while in grid to add the
+              appropriate type
+            </p>
             <div>
               <input
                 type="radio"
@@ -24,7 +31,7 @@
                 name="letter-status"
                 value="absent"
               />
-              <label for="letter-absent">Absent</label>
+              <label for="letter-absent">(1) Absent</label>
             </div>
 
             <div>
@@ -34,7 +41,7 @@
                 name="letter-status"
                 value="present"
               />
-              <label for="letter-present">Present (Wrong Position)</label>
+              <label for="letter-present">(2) Present (Wrong Position)</label>
             </div>
 
             <div>
@@ -44,18 +51,18 @@
                 name="letter-status"
                 value="correct"
               />
-              <label for="letter-correct">Correct Position</label>
+              <label for="letter-correct">(3) Correct Position</label>
             </div>
           </div>
           <div class="suggested-filler-wrapper">
             <div class="filler-title">
-              Don't know how to start? Try one of these filler words:
+              Don't know how to start? <br />Try one of these filler words:
             </div>
             <ul class="filler-word-list"></ul>
           </div>
           <div class="button-wrapper">
-            <button class="search">Search</button>
-            <button class="reset">Reset</button>
+            <button class="btn btn-search">Search</button>
+            <button class="btn btn-reset">Reset</button>
           </div>
         </div>
       </div>
