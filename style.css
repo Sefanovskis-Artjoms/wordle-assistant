@@ -193,6 +193,7 @@ body {
 .suggestions {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 1.2rem;
 }
 
 .suggestions__empty {
